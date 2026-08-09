@@ -2,8 +2,8 @@ backend:
   name: github
   repo: Mohammad-Ali-Nahhas/portfolio
   branch: main
-  base_url: https://portfolio-oauth.vercel.app
-
+  base_url: https://portfolio-seven-opal-23.vercel.app
+  auth_endpoint: api/auth
 local_backend: true
 
 media_folder: "images"
