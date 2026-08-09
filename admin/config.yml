@@ -1,0 +1,54 @@
+backend:
+  name: github
+  repo: Mohammad-Ali-Nahhas/portfolio
+  branch: main
+  base_url: https://portfolio-oauth.vercel.app
+
+local_backend: true
+
+media_folder: "images"
+public_folder: "images"
+
+collections:
+  - name: "projects"
+    label: "Projects"
+    folder: "content/projects"
+    create: true
+    slug: "{{slug}}"
+    identifier_field: "name"
+    fields:
+      - { label: "Name", name: "name", widget: "string" }
+      - { label: "Thumbnail", name: "thumb", widget: "image" }
+      - { label: "Description", name: "desc", widget: "text" }
+      - { label: "Tags", name: "tags", widget: "string" }
+      - { label: "Live URL", name: "live", widget: "string" }
+      - { label: "Code URL", name: "code", widget: "string" }
+      - { label: "Related Blog Post", name: "blog", widget: "string", required: false }
+
+
+  - name: "posts"
+    label: "Blog Posts"
+    folder: "content/posts"
+    create: true
+    slug: "{{slug}}"
+    identifier_field: "title"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "date" }
+      - { label: "Excerpt", name: "excerpt", widget: "text" }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "site"
+    label: "Site Info"
+    files:
+      - name: "general"
+        label: "General Info"
+        file: "content/site.md"
+        fields:
+          - { label: "Tagline", name: "tagline", widget: "string" }
+          - { label: "Bio", name: "bio", widget: "text" }
+          - { label: "Skills", name: "skills", widget: "string", hint: "Comma-separated, e.g. HTML, CSS, React" }
+          - { label: "Email", name: "email", widget: "string" }
+          - { label: "GitHub URL", name: "github", widget: "string" }
+          - { label: "LinkedIn URL", name: "linkedin", widget: "string" }
+          - { label: "Resume File", name: "resume", widget: "file", required: false }

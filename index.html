@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Mohammad Ali — Computer Science Student & Developer</title>
+<meta name="description" content="Portfolio of Mohammad Ali, a computer science student building full-stack projects.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="grain"></div>
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+<div id="nav-placeholder"></div>
+
+<section class="hero">
+  <div class="hero-eyebrow">Computer Science Student</div>
+  <h1 class="hero-name" id="heroName">Mohammad Ali</h1>
+  <p class="hero-tagline">I build things that live on the web — from AI chat interfaces to whatever's next.</p>
+  <div class="scroll-cue"><span>SCROLL</span><div class="line"></div></div>
+</section>
+
+<section id="about">
+  <div class="eyebrow reveal">About</div>
+  <p class="about-text reveal reveal-delay-1">
+    I'm a <strong>CS student</strong> who likes turning ideas into things people can actually click on.
+    Comfortable across the stack — <strong>React, Python, PHP, MySQL</strong> — and always looking
+    for the next project that teaches me something new.
+  </p>
+  <div class="skills reveal reveal-delay-2">
+    <span class="skill">HTML</span><span class="skill">CSS</span><span class="skill">PHP</span>
+    <span class="skill">Bootstrap</span><span class="skill">MySQL</span><span class="skill">React</span>
+    <span class="skill">Python</span><span class="skill">Java</span><span class="skill">JavaScript</span>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="eyebrow reveal">Selected Work</div>
+  <div class="project-card reveal reveal-delay-1">
+    <div class="project-top">
+      <div class="project-top-left">
+        <div class="project-thumb"><img src="images/jarvis-preview.png" alt="Jarvis chatbot interface"></div>
+        <span class="project-name">Jarvis</span>
+      </div>
+      <span class="project-arrow">→</span>
+    </div>
+    <div class="project-detail">
+      <p class="project-desc">
+        An AI chatbot with a custom HUD interface — FastAPI backend calling Claude,
+        React frontend built to feel like a real command console.
+      </p>
+      <div class="project-tags"><span>React</span><span>FastAPI</span><span>Claude API</span></div>
+      <div class="project-links">
+        <a href="https://jarvis-pink-three-83.vercel.app" target="_blank" rel="noopener">Live site ↗</a>
+        <a href="https://github.com/Mohammad-Ali-Nahhas/Jarvis" target="_blank" rel="noopener">View code ↗</a>
+        <a href="blog-post.html?post=building-jarvis">Read the writeup →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="writing">
+  <div class="eyebrow reveal">Latest Writing</div>
+  <div id="post-list-preview"></div>
+  <a href="writing.html" class="magnetic-btn reveal">
+    <span>Read all posts</span>
+    <span>→</span>
+  </a>
+</section>
+
+<section id="contact">
+  <div class="eyebrow reveal">Contact</div>
+  <p class="about-text reveal reveal-delay-1">Want to talk about a project, or just say hi?</p>
+  <a href="mailto:mohammad@example.com" class="magnetic-btn reveal reveal-delay-2">
+    <span>mohammad@example.com</span>
+    <span>↗</span>
+  </a>
+  <div class="social-links reveal reveal-delay-2">
+    <a href="https://github.com/Mohammad-Ali-Nahhas" target="_blank" rel="noopener">GitHub</a>
+    <a href="#" target="_blank" rel="noopener">LinkedIn</a>
+  </div>
+</section>
+
+<div id="footer-placeholder"></div>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>
