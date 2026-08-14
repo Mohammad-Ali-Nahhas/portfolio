@@ -1,9 +1,59 @@
 // Blog: list of all posts (add new filenames here as you write them)
 const POST_SLUGS = ['building-jarvis'];
+// Projects: list of all project slugs (add new filenames here as you add projects)
+const PROJECT_SLUGS = ['jarvis'];
+
+// Loads all projects (reuses the same frontmatter parser as blog posts)
+async function loadAllProjects() {
+  return Promise.all(PROJECT_SLUGS.map(async slug => {
+    const res = await fetch(`content/projects/${slug}.md`, { cache: 'no-store' });
+    const raw = await res.text();
+    const { meta } = parseFrontmatter(raw);
+    return { slug, ...meta };
+  }));
+}
+
+// Renders project cards into #project-list
+async function initProjectsSection() {
+  const container = document.getElementById('project-list');
+  if (!container) return;
+
+  const projects = await loadAllProjects();
+
+  container.innerHTML = projects.map((p, i) => {
+    const tags = p.tags.split(',').map(t => t.trim());
+    const blogLink = p.blog
+      ? `<a href="blog-post.html?post=${p.blog}">Read the writeup →</a>`
+      : '';
+
+    return `
+      <div class="project-card reveal reveal-delay-${i + 1}">
+        <div class="project-top">
+          <div class="project-top-left">
+            <div class="project-thumb"><img src="${p.thumb}" alt="${p.name} logo"></div>
+            <span class="project-name">${p.name}</span>
+          </div>
+          <span class="project-arrow">→</span>
+        </div>
+        <div class="project-detail">
+          <p class="project-desc">${p.desc}</p>
+          <div class="project-tags">${tags.map(t => `<span>${t}</span>`).join('')}</div>
+          <div class="project-links">
+            <a href="${p.live}" target="_blank" rel="noopener">Live site ↗</a>
+            <a href="${p.code}" target="_blank" rel="noopener">View code ↗</a>
+            ${blogLink}
+          </div>
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  initScrollReveals();
+}
 
 // Fetches and parses a single markdown post
 async function loadPost(slug) {
-  const res = await fetch(`content/posts/${slug}.md`);
+ const res = await fetch(`content/posts/${slug}.md`, { cache: 'no-store' });
   const raw = await res.text();
   return parseFrontmatter(raw);
 }
@@ -214,8 +264,6 @@ function initMagneticButtons() {
   });
 }
 
-// Run everything once the page loads
-// Run everything once the page loads
 document.addEventListener('DOMContentLoaded', async () => {
   await loadPartials();
   initCustomCursor();
@@ -225,14 +273,12 @@ document.addEventListener('DOMContentLoaded', async () => {
   await initWritingPage();
   await initBlogPostPage();
   await initHomePreview();
+  await initProjectsSection();
 
-  // Handle direct anchor links (e.g. index.html#about) after everything above has rendered
   if (window.location.hash) {
     const target = document.querySelector(window.location.hash);
     if (target) {
-      setTimeout(() => {
-        target.scrollIntoView({ behavior: 'smooth' });
-      }, 50);
+      setTimeout(() => target.scrollIntoView({ behavior: 'smooth' }), 50);
     }
   }
 });
